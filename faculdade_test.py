@@ -24,7 +24,9 @@ def test_pessoa_set_tel():
 def test_pessoa_set_tel_errado():
     pes = Pessoa('Fulano da Silva', 999999, 'fulano@mail.com')
     try:
-        pes.set_telefone('não é um telefone')
+        pes.set_telefone('não é um telefone')    
+        print(pes.get_telefone())
+
     except TypeError:
         pass
     else:
@@ -63,7 +65,7 @@ def test_aluno_matricula():
 
 
 def test_professor():
-    prof = Professor('Cicrano Souza', 999999, 'cicrano@mail.com', ['Engenharia de Software'])
+    prof = Professor('Cicrano Souza', 999999, 'cicrano@mail.com')
     assert prof.get_nome() == 'Cicrano Souza'
     assert prof.get_email() == 'cicrano@mail.com'
     assert prof.get_telefone() == 999999
@@ -72,7 +74,7 @@ def test_professor():
 def test_prof_ministra():
     dis1 = Disciplina('Linguagem de Programação II', 80)
     dis2 = Disciplina('Tecnologias Web', 80)
-    prof = Professor('Cicrano Souza', 999999, 'cicrano@mail.com', ['Engenharia de Software'])
+    prof = Professor('Cicrano Souza', 999999, 'cicrano@mail.com')
     prof.ministra(dis1)
     prof.ministra(dis2)
     assert len(prof.lista_disciplinas()) == 2
@@ -84,7 +86,7 @@ def test_prof_ministra_erro():
     dis1 = Disciplina('Linguagem de Programação II', 80)
     dis2 = Disciplina('Tecnologias Web', 80)
     dis3 = Disciplina('Linguagem SQL', 80)
-    prof = Professor('Cicrano Souza', 999999, 'cicrano@mail.com', ['Tecnologia Web'])
+    prof = Professor('Cicrano Souza', 999999, 'cicrano@mail.com')
     try:
         prof.ministra(dis1)
         prof.ministra(dis2)
@@ -95,3 +97,16 @@ def test_prof_ministra_erro():
         assert len(prof.lista_disciplinas()) == 2
         assert dis1 in prof.lista_disciplinas()
         assert dis2 in prof.lista_disciplinas()
+
+
+test_disciplina()
+test_pessoa()
+test_pessoa_set_tel()
+test_pessoa_set_tel_errado()
+test_pessoa_set_mail()
+test_pessoa_set_mail_errado()
+test_aluno()
+test_aluno_matricula()
+test_professor()
+test_prof_ministra()
+test_prof_ministra_erro()

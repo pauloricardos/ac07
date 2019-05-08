@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Disciplina:
     '''
     Abstração de uma disciplinai, possui os atributos Nome e carga Horária

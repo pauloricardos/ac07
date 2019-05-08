@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 from faculdade import Disciplina, Pessoa, Aluno, Professor
-
+# -*- coding: utf-8 -*-
 
 def test_disciplina():
     dis = Disciplina('Linguagem de Programação II', 80)

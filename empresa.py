@@ -57,8 +57,6 @@ class Programador(Funcionario):
     def __init__(self, nome: str, idade: int, email: str,
                  carga_horaria_semanal: int = 40):
         super().__init__(self, nome, idade)
-        self.nome = nome
-        self.idade = idade
         self.email = email
         self.carga_horaria_semanal = carga_horaria_semanal
         self.salarioBase = 35
@@ -104,10 +102,10 @@ class Estagiario(Funcionario):
     def __init__(self, nome: str, idade: int, email: str,
                  carga_horaria_semanal: int = 20):
         super().__init__(self, nome, idade)
-        self.nome = nome
-        self.idade = idade
         self.email = email
         self.carga_horaria_semanal = carga_horaria_semanal
+        if self.carga_horaria_semanal > 30 or self.carga_horaria_semanal < 16: 
+            raise ValueError
         self.salarioBase = 15.50
         self.auxilioAlimentacao = 250
 
@@ -118,16 +116,7 @@ class Estagiario(Funcionario):
         return self.salarioBase * self.carga_horaria_semanal * 4.5 + self.auxilioAlimentacao
 
     def altera_carga_horaria(self, nova_carga_horaria: int) -> None:
-        '''
-        altera a carga horária do funcionário, respeitando o limite,
-        de horas por categoria.
-        Caso o numero informado seja inválido, da raise em um ValueError
-        '''
-        if nova_carga_horaria >= 20 or nova_carga_horaria <= 16: 
-            raise ValueError
-        else: 
-            self.carga_horaria_semanal = nova_carga_horaria
-            return self.carga_horaria_semanal     
+        self.carga_horaria_semanal = nova_carga_horaria    
 
     def consulta_carga_horaria(self) -> int:
         '''
